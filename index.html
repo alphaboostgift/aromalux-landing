@@ -221,6 +221,34 @@
             50% { transform: scale(1.1); }
         }
 
+        /* Product Gallery */
+        .product-gallery {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-image:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
         /* Testimonials */
         .testimonials {
             padding: 80px 0;
@@ -389,6 +417,11 @@
                 grid-template-columns: 1fr;
             }
             
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
@@ -466,6 +499,22 @@
                 <div class="product-image fade-in">
                     <div>Premium Quality Aromatherapy Necklaces</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="product-gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">💎 See the Product Up Close</h2>
+            <p class="section-subtitle fade-in">High-quality images showcasing the elegant design and premium craftsmanship</p>
+            
+            <div class="gallery-grid fade-in">
+                <img src="https://img.kwcdn.com/product/open/d87af97a0a294a089969d479e20cf2a2-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Essential Oil Diffuser Necklace - Elegant Design" class="gallery-image" />
+                <img src="https://img.kwcdn.com/product/open/f78eb1763f0f4475a6a7da4d901504cc-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Aromatherapy Necklace - Premium Stainless Steel" class="gallery-image" />
+                <img src="https://img.kwcdn.com/product/open/f7d1da50486c44e099d25012fe19772f-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Diffuser Necklace Set - Two Beautiful Designs" class="gallery-image" />
+                <img src="https://img.kwcdn.com/product/open/95764838ffae4ecd801c03c48b065fb9-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Essential Oil Necklace - Easy to Use" class="gallery-image" />
+                <img src="https://img.kwcdn.com/product/open/eaa07c65bff14bf78195271feb4aa985-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Aromatherapy Jewelry - Complete Set with Felt Pads" class="gallery-image" />
             </div>
         </div>
     </section>
@@ -603,7 +652,47 @@
             });
         });
 
-        // Add CSS for ripple effect
+        // Image gallery interaction
+        document.querySelectorAll('.gallery-image').forEach(image => {
+            image.addEventListener('click', function() {
+                // Create modal for full-size image viewing
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.9);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                    cursor: pointer;
+                    animation: fadeIn 0.3s ease;
+                `;
+                
+                const modalImage = document.createElement('img');
+                modalImage.src = this.src;
+                modalImage.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    border-radius: 10px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                `;
+                
+                modal.appendChild(modalImage);
+                document.body.appendChild(modal);
+                
+                // Close modal on click
+                modal.addEventListener('click', () => {
+                    modal.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => modal.remove(), 300);
+                });
+            });
+        });
+
+        // Add CSS for modal animations
         const style = document.createElement('style');
         style.textContent = `
             .ripple {
@@ -620,6 +709,16 @@
                     transform: scale(2);
                     opacity: 0;
                 }
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
             }
         `;
         document.head.appendChild(style);
