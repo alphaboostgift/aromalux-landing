@@ -28,9 +28,41 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 100px 0;
-            text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 500px;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-product-image {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
         }
 
         .hero::before {
@@ -197,28 +229,25 @@
         .product-image {
             width: 100%;
             height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.2rem;
             position: relative;
             overflow: hidden;
         }
 
-        .product-image::before {
-            content: '💎';
-            font-size: 4rem;
-            opacity: 0.3;
-            position: absolute;
-            animation: pulse 2s ease-in-out infinite;
+        .benefits-product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .benefits-product-image:hover {
+            transform: scale(1.05);
         }
 
         /* Product Gallery */
@@ -404,6 +433,16 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -444,9 +483,16 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>AromaLux</h1>
-            <p>Carry serenity with you everywhere with our elegant aromatherapy diffuser necklaces</p>
-            <a href="#pricing" class="cta-button">Order Now for $19.99</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AromaLux</h1>
+                    <p>Carry serenity with you everywhere with our elegant aromatherapy diffuser necklaces</p>
+                    <a href="#pricing" class="cta-button">Order Now for $19.99</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://img.kwcdn.com/product/open/d87af97a0a294a089969d479e20cf2a2-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Essential Oil Diffuser Necklaces" class="hero-product-image" />
+                </div>
+            </div>
         </div>
     </section>
 
@@ -497,7 +543,7 @@
                 </div>
                 
                 <div class="product-image fade-in">
-                    <div>Premium Quality Aromatherapy Necklaces</div>
+                    <img src="https://img.kwcdn.com/product/open/f78eb1763f0f4475a6a7da4d901504cc-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Premium Aromatherapy Necklaces - Stainless Steel Design" class="benefits-product-image" />
                 </div>
             </div>
         </div>
@@ -510,8 +556,6 @@
             <p class="section-subtitle fade-in">High-quality images showcasing the elegant design and premium craftsmanship</p>
             
             <div class="gallery-grid fade-in">
-                <img src="https://img.kwcdn.com/product/open/d87af97a0a294a089969d479e20cf2a2-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Essential Oil Diffuser Necklace - Elegant Design" class="gallery-image" />
-                <img src="https://img.kwcdn.com/product/open/f78eb1763f0f4475a6a7da4d901504cc-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Aromatherapy Necklace - Premium Stainless Steel" class="gallery-image" />
                 <img src="https://img.kwcdn.com/product/open/f7d1da50486c44e099d25012fe19772f-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Diffuser Necklace Set - Two Beautiful Designs" class="gallery-image" />
                 <img src="https://img.kwcdn.com/product/open/95764838ffae4ecd801c03c48b065fb9-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Essential Oil Necklace - Easy to Use" class="gallery-image" />
                 <img src="https://img.kwcdn.com/product/open/eaa07c65bff14bf78195271feb4aa985-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Aromatherapy Jewelry - Complete Set with Felt Pads" class="gallery-image" />
