@@ -251,6 +251,45 @@
             transform: scale(1.05);
         }
 
+        /* Order Form Styles */
+        .order-form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .order-submit-btn {
+            width: 100%;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            padding: 18px;
+        }
+
         /* Product Gallery */
         .product-gallery {
             padding: 80px 0;
@@ -457,6 +496,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .order-form-container {
+                padding: 30px 20px;
+            }
+            
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
@@ -589,6 +632,34 @@
                 <img src="https://img.kwcdn.com/product/open/95764838ffae4ecd801c03c48b065fb9-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Essential Oil Necklace - Easy to Use" class="gallery-image" />
                 <img src="https://img.kwcdn.com/product/open/eaa07c65bff14bf78195271feb4aa985-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="AromaLux Aromatherapy Jewelry - Complete Set with Felt Pads" class="gallery-image" />
             </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-form" style="background: #fff; padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title fade-in">📬 Enter Your Delivery Info</h2>
+            <p class="section-subtitle fade-in">We need this info to ship your order. You'll pay safely with PayPal after submitting.</p>
+            
+            <form action="https://formsubmit.co/iliyadafov84@gmail.com" method="POST" class="order-form-container fade-in">
+                <input type="text" name="Full Name" placeholder="Full Name" required class="form-input">
+                
+                <input type="email" name="Email" placeholder="Email Address" required class="form-input">
+                
+                <textarea name="Shipping Address" placeholder="Shipping Address (Street, City, ZIP, Country)" required rows="4" class="form-input form-textarea"></textarea>
+                
+                <!-- Hidden config for FormSubmit -->
+                <input type="hidden" name="_next" value="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HPR8YK5F65BRA">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="New AromaLux Order - $19.99">
+                
+                <button type="submit" class="cta-button order-submit-btn">Complete Order & Pay via PayPal ($19.99)</button>
+                
+                <p style="font-size: 12px; color: #666; margin-top: 15px; text-align: center;">
+                    🔒 Your info is secure • You'll be redirected to PayPal for payment
+                </p>
+            </form>
         </div>
     </section>
 
