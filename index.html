@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AromaLux - Essential Oil Diffuser Necklaces for Daily Wellness</title>
+    
     <style>
         * {
             margin: 0;
@@ -607,8 +608,16 @@
                 
                 <a href="#order" class="cta-button" style="margin-top: 20px;">Order Now</a>
                 
-                <!-- PayPal Button Container -->
-                <div id="paypal-button-container" style="margin-top: 30px;"></div>
+                <!-- PayPal Payment Form -->
+                <div style="margin-top: 30px; text-align: center;">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick" />
+                        <input type="hidden" name="hosted_button_id" value="HPR8YK5F65BRA" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" style="max-width: 200px; height: auto;" />
+                    </form>
+                    <p style="font-size: 12px; color: #666; margin-top: 10px;">Secure payment via PayPal</p>
+                </div>
             </div>
         </div>
     </section>
@@ -642,45 +651,7 @@
         </div>
     </footer>
 
-    <!-- Load PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AbhyBK-mwsC68jnJiklFjaklJeUIFSoSMqF_2221CeZJSM5o3LKyHSF4Anq82yEWoltIlmz95MfQEBbW&currency=USD" onload="initPayPalButton()"></script>
-
-    <!-- PayPal Script -->
-    <script>
-        function initPayPalButton() {
-            // Wait a bit to ensure PayPal is fully loaded
-            setTimeout(function() {
-                if (typeof paypal !== 'undefined') {
-                    paypal.Buttons({
-                        style: {
-                            layout: 'vertical',
-                            color: 'gold',
-                            shape: 'pill',
-                            label: 'paypal'
-                        },
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: '19.99' // Цената
-                                    },
-                                    description: 'AromaLux – Aromatherapy Necklace Set (2 pcs + 20 pads)'
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('Thanks ' + details.payer.name.given_name + '! Your payment was successful!');
-                                window.location.href = "https://alphaboostgift.github.io/aromalux-landing/thankyou.html";
-                            });
-                        }
-                    }).render('#paypal-button-container');
-                } else {
-                    console.error('PayPal SDK not loaded');
-                }
-            }, 500);
-        }
-    </script>
+    <!-- Additional Interaction Scripts -->
 
     <script>
         // Smooth scrolling for anchor links
